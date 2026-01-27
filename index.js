@@ -86,6 +86,53 @@ const latinToCyrillicMap = {
     "C": "Ц",
     "c": "ц"
   };
+
+  const cyrillicToLatinMap = {
+    "А": "A", "а": "a",
+    "Ә": "Á", "ә": "á",
+    "Б": "B", "б": "b",
+    "В": "V", "в": "v",
+    "Г": "G", "г": "g",
+    "Ғ": "Ǵ", "ғ": "ǵ",
+    "Д": "D", "д": "d",
+    "Е": "E", "е": "e",
+    "Ё": "Yo", "ё": "yo",
+    "Ж": "J", "ж": "j",
+    "З": "Z", "з": "z",
+    "И": "Í", "и": "i",
+    "Й": "Y", "й": "y",
+    "К": "K", "к": "k",
+    "Қ": "Q", "қ": "q",
+    "Л": "L", "л": "l",
+    "М": "M", "м": "m",
+    "Н": "N", "н": "n",
+    "Ң": "Ń", "ң": "ń",
+    "О": "O", "о": "o",
+    "Ө": "Ó", "ө": "ó",
+    "П": "P", "п": "p",
+    "Р": "R", "р": "r",
+    "С": "S", "с": "s",
+    "Т": "T", "т": "t",
+    "У": "U", "у": "u",
+    "Ү": "Ú", "ү": "ú",
+    "Ў": "W", "ў": "w",
+    "Ф": "F", "ф": "f",
+    "Х": "X", "х": "x",
+    "Ҳ": "H", "ҳ": "h",
+    "Ш": "Sh", "ш": "sh",
+    "Ч": "Ch", "ч": "ch",
+    "Щ": "Sh", "щ": "sh", // optional
+    "Ы": "I", "ы": "ı",
+  
+    // Borrowed/Russian letters 
+    "Ц": "C", "ц": "c",
+    "Э": "E", "э": "e",
+    "Ю": "Yu", "ю": "yu",
+    "Я": "Ya", "я": "ya",
+    "Ъ": "", "ъ": "",
+    "Ь": "", "ь": ""
+  };
+  
   
   function latinToCyrillic(text) {
      let result = ""
@@ -109,5 +156,22 @@ const latinToCyrillicMap = {
   
      return result;
   }
+
+
+  function cyrillicToLatin(text) {
+    let result = ""
+
+    for(let i=0; i<text.length; i++) {
+        const char = text[i];
+
+        if(cyrillicToLatinMap[char] !== undefined) {
+            result+=cyrillicToLatinMap[char];
+        } else {
+            result+=char;
+        }
+    }
+
+    return result;
+  }
   
-  console.log(latinToCyrillic("Atash"))
+  
