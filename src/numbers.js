@@ -27,7 +27,7 @@ const tens = {
 const hundreds = {
   100: "bir júz",
   200: "eki júz",
-  300: "ush júz",
+  300: "úsh júz",
   400: "tórt júz",
   500: "bes júz",
   600: "altı júz",
@@ -39,11 +39,21 @@ const hundreds = {
 function numberToText(num) {
   // 0. Safety check (Validation)
   if (typeof num !== "number") return "Error: Not a number";
-  if (num < 0 || num > 1000) return "Error: Only 0-1000 supported for now";
+  if (num < 0 || num > 1000000000000)
+    return "Error: Only 0-1000000000000 (up to one trillion) supported for now";
 
   // 1. Handle exact whole numbers
   if (num === 100) return "júz";
   if (num === 1000) return "miń";
+  if (num === 10000) return "on miń";
+  if (num === 100000) return "júz miń";
+  if (num === 1000000) return "bir million";
+  if (num === 10000000) return "on million";
+  if (num === 100000000) return "júz million";
+  if (num === 1000000000) return "bir milliard";
+  if (num === 10000000000) return "on milliard";
+  if (num === 100000000000) return "júz milliard";
+  if (num === 1000000000000) return "bir trillion";
 
   // 2. Handle 0-9
   if (num < 10) {
@@ -93,6 +103,42 @@ function numberToText(num) {
 
     // You know this broo :)
     return `${hundredsText} ${tenText} ${oneText}`;
+  }
+
+  // Handle (1000 - 999999) (thousands)
+  if (num >= 1000 && num < 1000000) {
+    const thousandsPart = Math.floor(num / 1000);
+    const remainder = num % 1000;
+
+    if (remainder === 0) {
+      return `${numberToText(thousandsPart)} miń`;
+    }
+
+    return `${numberToText(thousandsPart)} miń ${numberToText(remainder)}`;
+  }
+
+  // Handle (million - billion) (millions)
+  if (num >= 1000000 && num < 1000000000) {
+    const millionsPart = Math.floor(num / 1000000);
+    const remainder = num % 1000000;
+
+    if (remainder === 0) {
+      return `${numberToText(millionsPart)} million`;
+    }
+
+    return `${numberToText(millionsPart)} million ${numberToText(remainder)}`;
+  }
+
+  // Handle (billion - trillion) (billions)
+  if (num >= 1000000000 && num < 1000000000000) {
+    const billionsPart = Math.floor(num / 1000000000);
+    const remainder = num % 1000000000;
+
+    if (remainder === 0) {
+      return `${numberToText(billionsPart)} milliard`;
+    }
+
+    return `${numberToText(billionsPart)} milliard ${numberToText(remainder)}`;
   }
 }
 

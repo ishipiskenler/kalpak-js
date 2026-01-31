@@ -1,18 +1,21 @@
 {
   "name": "kalpak-js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "description": "A lightweight JavaScript library for Karakalpak Cyrillic-Latin transliteration.",
+  "description": "Karakalpak language tools: transliteration (Latin/Cyrillic) and number-to-text conversion.",
   "keywords": [
     "karakalpak",
     "transliteration",
     "cyrillic",
     "latin",
     "qaraqalpaq",
-    "language"
+    "language",
+    "numbers",
+    "karakalpakstan",
+    "uzbekistan"
   ],
   "author": "Ishipiskenler",
   "license": "MIT",
