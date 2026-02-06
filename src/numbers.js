@@ -39,8 +39,12 @@ const hundreds = {
 function numberToText(num) {
   // 0. Safety check (Validation)
   if (typeof num !== "number") return "Error: Not a number";
-  if (num < 0 || num > 1000000000000)
-    return "Error: Only 0-1000000000000 (up to one trillion) supported for now";
+
+  if (num < -1000000000000 || num > 1000000000000)
+    return "Error: Only numbers between (-1000000000000)(1000000000000) (up to one trillion) supported for now";
+
+  // Handle negative numbers
+  if (num < 0) return "minus " + numberToText(Math.abs(num));
 
   // 1. Handle exact whole numbers
   if (num === 100) return "júz";
