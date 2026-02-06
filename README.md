@@ -1,4 +1,4 @@
-# Kalpak.js 
+# Kalpak.js
 
 Karakalpak language tools for JavaScript.
 
@@ -23,7 +23,7 @@ cyrillicToLatin("Сәлем"); // "Sálem"
 
 ### 2. Number to Text
 
-Convert numbers to Karakalpak words (0 to 1 trillion).
+Convert numbers to Karakalpak words (-1 trillion to 1 trillion).
 
 ```javascript
 const { numberToText } = require("kalpak-js");
@@ -31,15 +31,16 @@ const { numberToText } = require("kalpak-js");
 numberToText(42); // "qırıq eki"
 numberToText(2026); // "eki miń jigirma altı"
 numberToText(1000000); // "bir million"
+numberToText(-123); // "minus bir júz jigirma úsh"
 ```
 
 ## API
 
-| Function                | Input                   | Output           |
-| ----------------------- | ----------------------- | ---------------- |
-| `latinToCyrillic(text)` | Latin string            | Cyrillic string  |
-| `cyrillicToLatin(text)` | Cyrillic string         | Latin string     |
-| `numberToText(num)`     | Number (0 - 1 trillion) | Karakalpak words |
+| Function                | Input                | Output           |
+| ----------------------- | -------------------- | ---------------- |
+| `latinToCyrillic(text)` | Latin string         | Cyrillic string  |
+| `cyrillicToLatin(text)` | Cyrillic string      | Latin string     |
+| `numberToText(num)`     | Number (±1 trillion) | Karakalpak words |
 
 ## License
 

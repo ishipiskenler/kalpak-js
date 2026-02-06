@@ -43,8 +43,24 @@ function numberToText(num) {
   if (num < -1000000000000 || num > 1000000000000)
     return "Error: Only numbers between (-1000000000000)(1000000000000) (up to one trillion) supported for now";
 
-  // Handle negative numbers
+  // Handle negative numbers (minus sanlar)
   if (num < 0) return "minus " + numberToText(Math.abs(num));
+
+  // Handle decimal numbers (pútin sanlar)
+  if (!Number.isInteger(num)) {
+    const parts = num.toString().split(".");
+    const integerPart = parseInt(parts[0]);
+    const decimalPart = parseInt(parts[1]);
+
+    // Handle negative decimals
+    if (integerPart < 0) {
+      return `minus ${numberToText(Math.abs(integerPart))} pútin ${numberToText(
+        Math.abs(decimalPart)
+      )}`;
+    }
+
+    return `${numberToText(integerPart)} pútin ${numberToText(decimalPart)}`;
+  }
 
   // 1. Handle exact whole numbers
   if (num === 100) return "júz";
