@@ -79,30 +79,14 @@ function numberToText(num) {
 
   // Handle 100-999
   if (num >= 100 && num < 1000) {
-    const hundredsPart = Math.floor(num / 100) * 100;
-    const tenPart = Math.floor((num % 100) / 10) * 10;
-    const onePart = (num % 100) % 10;
+    const hundredsPart = Math.floor(num / 100);
+    const remainder = num % 100;
 
-    const hundredsText = hundreds[hundredsPart];
-    const tenText = tens[tenPart];
-    const oneText = digits[onePart];
-
-    if (tenPart === 0 && onePart === 0) {
-      return `${hundreds[num]}`;
+    if (remainder === 0) {
+      return `${numberToText(hundredsPart)} júz`;
     }
 
-    // If the ten-part is zero, return hundreds and one-part only (101,102, ...)
-    if (tenPart === 0) {
-      return `${hundredsText} ${oneText}`;
-    }
-
-    // If the one-part is zero, return hundreds-part and tens-part only (110,120, ...)
-    if (onePart === 0) {
-      return `${hundredsText} ${tenText}`;
-    }
-
-    // You know this broo :)
-    return `${hundredsText} ${tenText} ${oneText}`;
+    return `${numberToText(hundredsPart)} júz ${numberToText(remainder)}`;
   }
 
   // Handle (1000 - 999999) (thousands)
