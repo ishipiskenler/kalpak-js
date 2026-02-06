@@ -1,4 +1,4 @@
-# Kalpak.js 🧢
+# Kalpak.js 
 
 Karakalpak language tools for JavaScript.
 
