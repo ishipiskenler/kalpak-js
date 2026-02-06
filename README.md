@@ -23,15 +23,15 @@ cyrillicToLatin("Сәлем"); // "Sálem"
 
 ### 2. Number to Text
 
-Convert numbers to Karakalpak words (-1 trillion to 1 trillion).
+Convert numbers to Karakalpak words (-1 trillion to 1 trillion). Supports integers, negative numbers, and decimals.
 
 ```javascript
 const { numberToText } = require("kalpak-js");
 
 numberToText(42); // "qırıq eki"
 numberToText(2026); // "eki miń jigirma altı"
-numberToText(1000000); // "bir million"
 numberToText(-123); // "minus bir júz jigirma úsh"
+numberToText(3.14); // "úsh pútin on tórt"
 ```
 
 ## API
